@@ -70,6 +70,7 @@ function addToBasket() {
         colors: document.querySelector('#colors').value,
         price: price.innerHTML,
       };
+      console.log(product);
       //Stocker la récupération des valeurs dans le local storage
 
       //Déclaration de la variable 'productLocalStorage" dans laquelle on met les keys et valeurs qui sont dans le local storage
@@ -88,6 +89,7 @@ function addToBasket() {
           // Modifies la quantité et la couleur d'un produit déjà dans le panier avec sa nouvelle valeur
           let newQuantity =
             parseInt(isProductInTheCart.quantity) + parseInt(product.quantity);
+          // "1" + "1" = 11 ; 1 + 1 = 2 = ParseInt
           isProductInTheCart.quantity = newQuantity;
           localStorage.setItem('cart', JSON.stringify(productLocalStorage));
         } else {
@@ -104,5 +106,4 @@ function addToBasket() {
     }
   });
 }
-
 addToBasket();
