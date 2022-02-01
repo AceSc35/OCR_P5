@@ -1,6 +1,5 @@
-let productLocalStorage = JSON.parse(localStorage.getItem('cart'));
+let productsLocalStorage = JSON.parse(localStorage.getItem('cart'));
 
-console.log(productLocalStorage);
 function cartItems() {
   //Création des balises principales de la section "#cart"
 
@@ -49,11 +48,11 @@ function classContent() {
   //Liaison HTML/CSS des class avec JS
 
   articleProduct.classList.add('cart__item');
-  articleProduct.setAttribute('data-id', productLocalStorage[cart].productID);
+  articleProduct.setAttribute('data-id', productsLocalStorage[cart].productID);
+  console.log(productsLocalStorage[cart].productID);
   articleImg.classList.add('cart__item__img');
   itemContent.classList.add('cart__item__content');
   itemContentDescription.classList.add('cart__item__content__description');
-  titleProduct.innerHTML = productLocalStorage[cart].name;
   itemContentSetting.classList.add('cart__item__content__settings');
   itemsContentSettingQuantity.classList.add('cart__item__content__settings__quantity');
   inputProduct.classList.add('itemQuantity');
@@ -64,4 +63,11 @@ function classContent() {
   itemsContentSettingDelete.classList.add('cart__item__content__settings__delete');
   deleteProduct.classList.add('deleteItem');
 }
-classContent();
+
+function displayCart() {
+  for (cart in productsLocalStorage) {
+    classContent();
+  }
+}
+
+displayCart();

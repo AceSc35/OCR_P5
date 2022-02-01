@@ -55,11 +55,7 @@ function addToBasket() {
   addToCart.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if (
-      addQuantity.value > 0 &&
-      addQuantity.value <= 100 &&
-      addQuantity.value != 0
-    ) {
+    if (addQuantity.value > 0 && addQuantity.value <= 100 && addQuantity.value != 0) {
       let idBasket = 0;
       let product = {
         //Assignation des valeurs du produit dans le "cart"
@@ -79,16 +75,13 @@ function addToBasket() {
       if (productLocalStorage) {
         //S'il y a exactement le même produit avec la même couleur dans le local storage, on ajoute la quantité
         const isProductInTheCart = productLocalStorage.find(
-          (productInCart) =>
-            productInCart.productID === product.productID &&
-            productInCart.colors === product.colors
+          (productInCart) => productInCart.productID === product.productID && productInCart.colors === product.colors
         );
 
         // Ajoute la quantité d'un produit déjà existant dans le panier
         if (isProductInTheCart) {
           // Modifies la quantité et la couleur d'un produit déjà dans le panier avec sa nouvelle valeur
-          let newQuantity =
-            parseInt(isProductInTheCart.quantity) + parseInt(product.quantity);
+          let newQuantity = parseInt(isProductInTheCart.quantity) + parseInt(product.quantity);
           // "1" + "1" = 11 ; 1 + 1 = 2 = ParseInt
           isProductInTheCart.quantity = newQuantity;
           localStorage.setItem('cart', JSON.stringify(productLocalStorage));
@@ -106,4 +99,5 @@ function addToBasket() {
     }
   });
 }
+
 addToBasket();
