@@ -23,10 +23,12 @@ function chooseArticle() {
 
       //Création des balises HTML/API - Image
 
-      const productIMG = document.createElement('img');
-      document.querySelector('.item__img ').appendChild(productIMG);
+      let productIMG = document.createElement('img');
+      document.querySelector('.item__img').appendChild(productIMG);
       productIMG.src = product.imageUrl;
       productIMG.alt = product.altTxt;
+      productIMGsrc = productIMG.src;
+      productIMGalt = productIMG.alt;
 
       //Création des balises HTML/API - Title-Description-Price
 
@@ -65,7 +67,10 @@ function addToBasket() {
         quantity: document.querySelector('#quantity').value,
         colors: document.querySelector('#colors').value,
         price: price.innerHTML,
+        productIMG: productIMGsrc,
+        productIMGaltTxt: productIMGalt,
       };
+
       console.log(product);
       //Stocker la récupération des valeurs dans le local storage
 

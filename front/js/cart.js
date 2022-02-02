@@ -46,22 +46,30 @@ function classContent() {
   appendChildContent();
 
   //Liaison HTML/CSS des class avec JS
-
-  articleProduct.classList.add('cart__item');
+  articleProduct.className = 'cart__item';
   articleProduct.setAttribute('data-id', productsLocalStorage[cart].productID);
+  articleProduct.setAttribute('data-color', productsLocalStorage[cart].colors);
   console.log(productsLocalStorage[cart].productID);
   articleImg.classList.add('cart__item__img');
+  imgCartProduct.src = productsLocalStorage[cart].productIMG;
+  imgCartProduct.alt = productsLocalStorage[cart].productIMGaltTxt;
   itemContent.classList.add('cart__item__content');
   itemContentDescription.classList.add('cart__item__content__description');
+  titleProduct.innerHTML = productsLocalStorage[cart].name;
+  colorProduct.innerHTML = 'Couleur : ' + productsLocalStorage[cart].colors;
+  priceProduct.innerHTML = 'Prix : ' + productsLocalStorage[cart].price + ' €';
   itemContentSetting.classList.add('cart__item__content__settings');
   itemsContentSettingQuantity.classList.add('cart__item__content__settings__quantity');
+  quantityProduct.innerHTML = 'Quantité : ';
   inputProduct.classList.add('itemQuantity');
+  inputProduct.value = productsLocalStorage[cart].quantity;
   inputProduct.setAttribute('type', 'number');
   inputProduct.setAttribute('name', 'itemQuantity');
   inputProduct.setAttribute('min', '1');
   inputProduct.setAttribute('max', '100');
   itemsContentSettingDelete.classList.add('cart__item__content__settings__delete');
   deleteProduct.classList.add('deleteItem');
+  deleteProduct.innerHTML = 'Supprimer';
 }
 
 function displayCart() {
