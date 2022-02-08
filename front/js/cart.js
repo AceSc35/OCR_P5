@@ -138,3 +138,134 @@ function displayCart() {
 displayCart();
 modifyQuantityItems();
 deleteQuantityItems();
+
+// Formulaire
+
+function createForm() {
+  let form = document.querySelector('.cart__order__form');
+
+  //Ecouter les modifications
+  form.firstName.addEventListener('change', function () {
+    validFirstName(this);
+  });
+  form.lastName.addEventListener('change', function () {
+    validLastName(this);
+  });
+  form.address.addEventListener('change', function () {
+    validAddress(this);
+  });
+  form.city.addEventListener('change', function () {
+    validCity(this);
+  });
+  form.email.addEventListener('change', function () {
+    validEmail(this);
+  });
+
+  //Validation FirstName
+
+  const validFirstName = function (firstNameform) {
+    //Création de la RegExp pour validation FirstName
+    let firstNameExp = new RegExp(/^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{3,20}$/);
+
+    //Recuperation de la balise p
+    let p = firstNameform.nextElementSibling;
+
+    //On test l'expression régulière
+    if (firstNameExp.test(firstNameform.value)) {
+      p.innerHTML = '';
+      return true;
+    } else {
+      p.innerHTML = 'Votre prénom doit contenir entre 3 et 20 caractères';
+      return false;
+    }
+  };
+
+  //Validation LastName
+
+  const validLastName = function (lastNameform) {
+    //Création de la RegExp pour validation LastName
+    let lastNameExp = new RegExp(/^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{3,20}$/);
+
+    //Recuperation de la balise p
+    let p = lastNameform.nextElementSibling;
+
+    //On test l'expression régulière
+    if (lastNameExp.test(lastNameform.value)) {
+      p.innerHTML = '';
+      return true;
+    } else {
+      p.innerHTML = 'Votre nom doit contenir entre 3 et 20 caractères et ne doit pas contenir de chiffres';
+      return false;
+    }
+  };
+
+  //Validation address
+
+  const validAddress = function (addressform) {
+    //Création de la RegExp pour validation adresse
+    let addressExp = new RegExp('^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+');
+
+    //Recuperation de la balise p
+    let p = addressform.nextElementSibling;
+
+    //On test l'expression régulière
+    if (addressExp.test(addressform.value)) {
+      p.innerHTML = '';
+      return true;
+    } else {
+      p.innerHTML = 'Votre adresse est invalide';
+      return false;
+    }
+  };
+
+  //Validation city
+
+  const validCity = function (cityform) {
+    //Création de la RegExp pour validation de la ville
+    let cityExp = new RegExp(/^[a-zA-Zàâäéèêëïîôöùûüç]+(?:[- ][a-zA-Zàâäéèêëïîôöùûüç]+)*$/);
+
+    //Recuperation de la balise p
+    let p = cityform.nextElementSibling;
+
+    //On test l'expression régulière
+    if (cityExp.test(cityform.value)) {
+      p.innerHTML = '';
+      return true;
+    } else {
+      p.innerHTML = 'Votre ville est invalide';
+      return false;
+    }
+  };
+
+  //Validation email
+
+  const validEmail = function (emailform) {
+    //Création de la RegExp pour validation de l'email
+    let emailExp = new RegExp(/^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/);
+
+    //Recuperation de la balise p
+    let p = emailform.nextElementSibling;
+
+    //On test l'expression régulière
+    if (emailExp.test(emailform.value)) {
+      p.innerHTML = '';
+      return true;
+    } else {
+      p.innerHTML = 'Votre email est invalide';
+      return false;
+    }
+  };
+}
+createForm();
+
+/*function getForm() {
+  let btnOrder = document.getElementById('#order');
+
+  btnOrder.addEventListener('click' , function(e){
+    e.preventDefault();
+    if {
+    }
+})
+}
+getForm();
+*/
