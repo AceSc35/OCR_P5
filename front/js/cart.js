@@ -258,14 +258,54 @@ function createForm() {
 }
 createForm();
 
-/*function getForm() {
-  let btnOrder = document.getElementById('#order');
-
-  btnOrder.addEventListener('click' , function(e){
+function getForm() {
+  let btnOrder = document.getElementById('order');
+  btnOrder.addEventListener('click', (e) => {
     e.preventDefault();
-    if {
+    //Récupération des coordonnées du formulaire client
+
+    let firstnameRecover = document.getElementById('firstName');
+    let lastnameRecover = document.getElementById('lastName');
+    let addressRecover = document.getElementById('address');
+    let cityRecover = document.getElementById('city');
+    let emailRecover = document.getElementById('email');
+
+    //Construction d'un array depuis le local storage
+    let idProduct = [];
+    for (let f = 0; f < productsLocalStorage.length; f++) {
+      idProduct.push(productsLocalStorage[f].productID);
     }
-})
+
+    const order = {
+      contact: {
+        firstName: firstnameRecover.value,
+        lastName: lastnameRecover.value,
+        address: addressRecover.value,
+        city: cityRecover.value,
+        email: emailRecover.value,
+      },
+      products: idProduct,
+    };
+
+    const postMethod = {
+      method: 'POST',
+      body: JSON.stringify(order),
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json',
+      },
+    };
+
+    fetch('http://localhost:3000/api/products/order', postMethod)
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.clear();
+        localStorage.setItem('orderId', data.orderId);
+        document.location.href = 'confirmation.html';
+      })
+      .catch((er) => {
+        alert('Problème de fetch : ' + err.message);
+      });
+  });
 }
 getForm();
-*/

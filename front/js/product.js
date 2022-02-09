@@ -91,21 +91,30 @@ function addToBasket() {
           // "1" + "1" = 11 ; 1 + 1 = 2 = ParseInt
           isProductInTheCart.quantity = newQuantity;
           localStorage.setItem('cart', JSON.stringify(productLocalStorage));
+          redirectionBasket();
         } else {
           // Si le produit n'est pas dans le panier + panier existant => ajouter le produit dans le panier
           productLocalStorage.push(product);
           localStorage.setItem('cart', JSON.stringify(productLocalStorage));
+          redirectionBasket();
         }
       } else {
         // Si le panier est vide, ajouter le produit dans le panier
         productLocalStorage = [];
         productLocalStorage.push(product);
         localStorage.setItem('cart', JSON.stringify(productLocalStorage));
+        redirectionBasket();
       }
     } else {
       alert('Veuillez ajouter une couleur et/ou une quantité comprise entre 1 et 100');
     }
   });
+}
+
+function redirectionBasket() {
+  if (window.confirm('Le produit a été rajouté au panier, cliquez sur OK pour y acceder')) {
+    window.location.href = 'cart.html';
+  }
 }
 
 addToBasket();
