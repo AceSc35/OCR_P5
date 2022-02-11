@@ -128,10 +128,14 @@ function deleteQuantityItems() {
 }
 
 function displayCart() {
-  //if -> si le panier et vide
-  for (cart in productsLocalStorage) {
-    // transformer cette ligne en else
-    classContent();
+  // Si le panier est vide = alert, sinon les éléments apparaitront
+  let nothinginCart = document.querySelector('#cart__items');
+  if (productsLocalStorage === null || productsLocalStorage == 0) {
+    nothinginCart.innerHTML = `<h3>Votre panier est vide</h3>`;
+  } else {
+    for (cart in productsLocalStorage) {
+      classContent();
+    }
   }
 }
 
@@ -303,7 +307,7 @@ function getForm() {
         localStorage.setItem('orderId', data.orderId);
         document.location.href = 'confirmation.html';
       })
-      .catch((er) => {
+      .catch((err) => {
         alert('Problème de fetch : ' + err.message);
       });
   });
