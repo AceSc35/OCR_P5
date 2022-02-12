@@ -244,16 +244,16 @@ function getForm() {
     }
 
     //Construction d'un array depuis le local storage
-    let idproducts = [];
+    let products = [];
     for (let f = 0; f < productsLocalStorage.length; f++) {
-      idproducts.push(productsLocalStorage[f].productID);
+      products.push(productsLocalStorage[f].productID);
     }
 
     //Si le formulaire est validé alors l'order se fera
     if (validForm() === true) {
       const order = {
         contact,
-        productsLocalStorage,
+        products,
       };
       console.log(order);
       fetch('http://localhost:3000/api/products/order', {
@@ -265,10 +265,9 @@ function getForm() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          //localStorage.clear();
+          localStorage.clear();
           localStorage.setItem('orderId', data.orderId);
-          //document.location.href = 'confirmation.html';
+          document.location.href = 'confirmation.html';
         })
         .catch((err) => {
           console.log(err);
