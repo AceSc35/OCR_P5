@@ -104,6 +104,7 @@ function modifyQuantityItems() {
   }
 }
 
+//Supprimer le produit dans le panier
 function deleteQuantityItems() {
   let btn_supprimer = document.querySelectorAll('.deleteItem');
 
@@ -226,6 +227,7 @@ function getForm() {
       }
     }
 
+    //Validation du formulaire général (sous condition)
     function validForm() {
       //Si la valeurs des autres fonction est égale à true alors une clé contact va se créer
       if (
@@ -249,13 +251,12 @@ function getForm() {
       products.push(productsLocalStorage[f].productID);
     }
 
-    //Si le formulaire est validé alors l'order se fera
+    //Si le formulaire est validé alors la commande sera pris en compte
     if (validForm() === true) {
       const order = {
         contact,
         products,
       };
-      console.log(order);
       fetch('http://localhost:3000/api/products/order', {
         method: 'POST',
         headers: {

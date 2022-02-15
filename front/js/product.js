@@ -46,7 +46,6 @@ function chooseArticle() {
       }
     });
 }
-//Rajouter Promise !!!
 
 function addToBasket() {
   //Ajouter une quantité et l'ajouter dans le panier avec l'eventListener et local storage
@@ -72,7 +71,6 @@ function addToBasket() {
         productIMGaltTxt: productIMGalt,
       };
 
-      console.log(product);
       //Stocker la récupération des valeurs dans le local storage
 
       //Déclaration de la variable 'productLocalStorage" dans laquelle on met les keys et valeurs qui sont dans le local storage
@@ -106,11 +104,13 @@ function addToBasket() {
         redirectionBasket();
       }
     } else {
+      //Si une des deux conditions d'ajout au panier n'est pas respecté
       alert('Veuillez ajouter une couleur et/ou une quantité comprise entre 1 et 100');
     }
   });
 }
 
+//Demande de redirection sur le cart.html après l'ajout d'un article au panier
 function redirectionBasket() {
   if (window.confirm('Le produit a été rajouté au panier, cliquez sur OK pour y acceder')) {
     window.location.href = 'cart.html';
