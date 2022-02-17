@@ -10,11 +10,11 @@ async function getProducts() {
   }
 }
 
+//Creation des items dans l'html
+
 async function createSectionItems() {
   const arrayProduct = await getProducts();
   arrayProduct.forEach((product) => {
-    //Creation balise dans l'html
-
     anchor = document.createElement('a');
     article = document.createElement('article');
     img = document.createElement('img');

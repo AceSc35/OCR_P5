@@ -36,7 +36,7 @@ function chooseArticle() {
       price.innerHTML = product.price;
       description.innerHTML = product.description;
 
-      // choix de la couleur
+      // Choix de la couleur
 
       for (colors of product.colors) {
         const productColor = document.createElement('option');
@@ -48,7 +48,7 @@ function chooseArticle() {
 }
 
 function addToBasket() {
-  //Ajouter une quantité et l'ajouter dans le panier avec l'eventListener et local storage
+  //Ajouter une quantité et l'ajouter dans le panier avec le DOM et local storage
 
   const addToCart = document.querySelector('#addToCart');
   const addQuantity = document.querySelector('#quantity');
@@ -86,7 +86,6 @@ function addToBasket() {
         if (isProductInTheCart) {
           // Modifies la quantité et la couleur d'un produit déjà dans le panier avec sa nouvelle valeur
           let newQuantity = parseInt(isProductInTheCart.quantity) + parseInt(product.quantity);
-          // "1" + "1" = 11 ; 1 + 1 = 2 = ParseInt
           isProductInTheCart.quantity = newQuantity;
           localStorage.setItem('cart', JSON.stringify(productLocalStorage));
           redirectionBasket();

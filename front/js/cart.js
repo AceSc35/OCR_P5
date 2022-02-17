@@ -172,6 +172,7 @@ function getForm() {
         msgFirstNameErr.innerHTML = 'Votre prénom doit contenir entre 3 et 20 caractères';
       }
     }
+
     //Validation LastName
 
     function validLastName() {
@@ -228,8 +229,10 @@ function getForm() {
     }
 
     //Validation du formulaire général (sous condition)
+
     function validForm() {
-      //Si la valeurs des autres fonction est égale à true alors une clé contact va se créer
+      //Si la valeur des autres fonctions est égale à true alors une clé contact va se créer
+
       if (
         validFirstName() === true &&
         validLastName() === true &&
@@ -251,7 +254,7 @@ function getForm() {
       products.push(productsLocalStorage[f].productID);
     }
 
-    //Si le formulaire est validé alors la commande sera pris en compte
+    //Si le formulaire est validé alors la commande sera prise en compte
     if (validForm() === true) {
       const order = {
         contact,
