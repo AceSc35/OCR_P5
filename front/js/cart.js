@@ -84,10 +84,15 @@ function classContent() {
 //Prix total du produit
 function totalPriceBasket() {
   let totalPrice = 0;
-  for (cart in productsLocalStorage) {
-    totalPrice += productsLocalStorage[cart].price * productsLocalStorage[cart].quantity;
-  }
-  document.querySelector('#totalPrice').innerHTML = totalPrice;
+  const cart = JSON.parse(localStorage.getItem('cart'));
+  cart.forEach((article) => {
+    fetch('http://localhost:3000/api/products/' + article.productID)
+      .then((response) => response.json())
+      .then((product) => {
+        totalPrice += product.price * article.quantity;
+        document.querySelector('#totalPrice').innerHTML = totalPrice;
+      });
+  });
 }
 
 //Modifier la quantité d'un produit
@@ -129,7 +134,7 @@ function deleteQuantityItems() {
 function displayCart() {
   // Si le panier est vide = alert, sinon les éléments apparaitront
   let nothinginCart = document.querySelector('#cart__items');
-  if (productsLocalStorage === null || productsLocalStorage === 0) {
+  if (productsLocalStorage === null || productsLocalStorage.length == 0) {
     nothinginCart.innerHTML = `<h3>Votre panier est vide</h3>`;
   } else {
     for (cart in productsLocalStorage) {
