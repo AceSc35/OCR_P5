@@ -1,4 +1,4 @@
-# OpenClassrooms - Projet n°5 - Kanap
+# OpenClassrooms - Projet 5 - Kanap
 
 Réalisation d'un e-commerce à partir de pages statiques, d'un back et d'une API. Il était important de bien séparer et commenter le code. 
 Ainsi que prendre l'habitude de bien découper ses fonctions.
